@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "517247524068",
+    "firebase_url": "https://questionnaire-edea1.firebaseio.com",
+    "project_id": "questionnaire-edea1",
+    "storage_bucket": "questionnaire-edea1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517247524068:android:21824141f0fedfd0",
+        "android_client_info": {
+          "package_name": "Info.atiar.questionnaire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517247524068-5jc5qhg3n7db2ko1lm0voopvtbjhuab1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "Info.atiar.questionnaire",
+            "certificate_hash": "b7db144a1b10fedd42e4d5d7306ab38367bbfd90"
+          }
+        },
+        {
+          "client_id": "517247524068-riie53ouuutps06o3ourrdob1fqgldfr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIbMx3FXR7jbqAgfzZIuKMQ_BNPiGwsdw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517247524068-riie53ouuutps06o3ourrdob1fqgldfr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

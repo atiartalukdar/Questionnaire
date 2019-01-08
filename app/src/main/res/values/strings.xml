@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">How Well Are You Thinking?</string>
+
+    <string name="hint_name">Full Name</string>
+    <string name="hint_DOB">Date of Birth (MM/DD/YY)</string>
+    <string name="hint_balance_problem">If yes, do you know the cause?</string>
+    <string name="hint_persnality_specifiy_changes">specify changes</string>
+    <string name="hint_current_date">What is today’s date?(M/D/Y)(from memory - no cheating!)</string>
+    <string name="hint_enter_name">Enter Name (No worry about spelling!)</string>
+    <string name="hint_name_following_picture">Name the following pictures (don’t worry about spelling)</string>
+
+    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_msg_password">Enter the password</string>
+
+
+    <!-- For Paint options -->
+    <string name="start_new">New</string>
+    <string name="brush">Brush</string>
+    <string name="erase">Erase</string>
+    <string name="save">Save</string>
+    <string name="paint">Paint</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="info.atiar.questionnaire">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:node="replace" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="app.AppController"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ac065fa4fd7ecf48b4fe2b391d25bcc416e85b2d" />
+
+        <activity android:name=".Page2" />
+        <activity android:name=".Page3" />
+        <activity android:name=".Page4" />
+        <activity android:name=".Page5" />
+        <activity android:name=".Page6" />
+        <activity android:name=".Page7" />
+        <activity android:name=".Page10q8" />
+        <activity android:name=".Page8" />
+        <activity android:name=".Page9q7" />
+        <activity android:name=".Page11q10" />
+        <activity android:name=".Page12q12Preview" />
+        <activity android:name=".Page13q12"></activity>
+    </application>
+
+</manifest>

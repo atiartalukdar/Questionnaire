@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Page4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How are a watch and a ruler similar? Write down how they are alike. They both are… what?" />
+        />
+
+        <EditText
+            android:id="@+id/input_page4q1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:hint="Type Your Answer"
+            android:maxLines="5"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="How many nickels are in 60 cents? " />
+        />
+
+        <EditText
+            android:id="@+id/input_page4q2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:hint="Type Your Answer"
+            android:maxLines="5"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="You are buying $13.45 of groceries. How much change would you receive back from a $20 bill?" />
+        />
+
+        <EditText
+            android:id="@+id/input_page4q3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:hint="Type Your Answer"
+            android:maxLines="5"/>
+
+        <ImageButton
+            android:onClick="next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:src="@drawable/ic_arrow_forward_black_24dp"
+            android:layout_gravity="right"/>
+
+    </LinearLayout>
+</LinearLayout>
