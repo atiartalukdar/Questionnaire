@@ -17,7 +17,24 @@
 
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_layout_dob"
+            android:id="@+id/input_layout_email"
+            android:layout_width="match_parent"
+            android:paddingTop="40dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:tag="notEmail"
+                android:hint="Please enter your valid email address" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_haveYouFinished"
             android:layout_width="match_parent"
             android:paddingTop="40dp"
             android:layout_height="wrap_content">

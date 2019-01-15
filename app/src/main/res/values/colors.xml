@@ -7,6 +7,8 @@
     <item name="white" type="color">#ffffff</item>
     <item name="whiteSheed" type="color">#f9f6f6</item>
     <item name="black" type="color">#000000</item>
+    <item name="black_sage" type="color">#140303</item>
+    <item name="background_sage" type="color">#F7FE8E</item>
     <item name="green" type="color">#00ff00</item>
     <item name="red" type="color">#ff0000</item>
     <item name="blue" type="color">#0000ff</item>

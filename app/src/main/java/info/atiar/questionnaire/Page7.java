@@ -3,11 +3,13 @@ package info.atiar.questionnaire;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,6 +51,9 @@ public class Page7 extends AppCompatActivity {
     String emailBody = "";
     //tipically last page
     @BindView(R.id.input_haveYouFinished)    EditText _haveYouFinished;
+    @BindView(R.id.input_email)    EditText _email;
+    @BindView(R.id.input_layout_email)    TextInputLayout _layoutEmail;
+    @BindView(R.id.input_layout_haveYouFinished)    TextInputLayout _layoutHaveYouFinished;
 
     String page3Image1,page3Image2,page9q7Image,page10q8Image,page11q10Image,page13q12Image;
     @Override
@@ -66,15 +71,41 @@ public class Page7 extends AppCompatActivity {
 
     }
 
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
     public void next(View view) {
-        new UploadImagesTOServer().execute(); // initialize asynchronous task
-        SP.setPreference(mContext, Info.key_page7_haveYouFinished, Info.q_page7_haveYouFinished+_haveYouFinished.getText().toString());
-        //TODO: need write the mailing function
+
+        if (_email.getTag().equals("email")){
+            generateEmailBody();
+            if (!isEmailValid(_email.getText().toString())){
+                _email.setError("Enter Valid Email");
+            }else {
+                toEmailList.add(_email.getText().toString());
+                _email.setTag("notEmail");
+                try{
+                    new SendMailTask(mActivity).execute(fromEmail,
+                            fromPassword, toEmailList, emailSubject, emailBody);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+
+        }else{
+            new UploadImagesTOServer().execute(); // initialize asynchronous task
+            SP.setPreference(mContext, Info.key_page7_haveYouFinished, Info.q_page7_haveYouFinished+_haveYouFinished.getText().toString());
+
+            _layoutHaveYouFinished.setVisibility(View.GONE);
+            _layoutEmail.setVisibility(View.VISIBLE);
+            _email.setTag("email");
+        }
 
     }
 
     String downloadLink = "";
-    private String uploadImage(String fileName, String path){
+    private String uploadImage(final String fileName, String path){
         Bitmap bitmap = BitmapFactory.decodeFile(path);
 
         if (bitmap != null){
@@ -107,6 +138,8 @@ public class Page7 extends AppCompatActivity {
                             Log.e("download url : ", dlink);
                             //TODO: update sharedpreferences with the download link
                             downloadLink = dlink;
+                            SP.setPreference(mContext,fileName+"link",dlink);
+
                         }
                     });
 
@@ -132,11 +165,10 @@ public class Page7 extends AppCompatActivity {
         }
         @Override
         protected Void doInBackground(Void... params) {
-
-           d1 = uploadImage(Info.fileName_page9q7_image,SP.getPreference(mContext,Info.key_page9q7_image));
-           d2 = uploadImage(Info.fileNam_page10q8_image,SP.getPreference(mContext,Info.key_page10q8_image));
-           d3 = uploadImage(Info.fileNam_page11q10_image,SP.getPreference(mContext,Info.key_page11q10_image));
-           d4 = uploadImage(Info.fileNam_page13q12_image,SP.getPreference(mContext,Info.key_page13q12_image));
+           SP.setPreference(mContext,"d1",uploadImage(Info.fileName_page9q7_image,SP.getPreference(mContext,Info.key_page9q7_image)));
+           SP.setPreference(mContext,"d2",uploadImage(Info.fileNam_page10q8_image,SP.getPreference(mContext,Info.key_page10q8_image)));
+           SP.setPreference(mContext,"d3",uploadImage(Info.fileNam_page11q10_image,SP.getPreference(mContext,Info.key_page11q10_image)));
+           SP.setPreference(mContext,"d4",uploadImage(Info.fileNam_page13q12_image,SP.getPreference(mContext,Info.key_page13q12_image)));
            return null;
         }
 
@@ -144,17 +176,15 @@ public class Page7 extends AppCompatActivity {
 
 
             generateEmailBody();
+
+            Log.e("Atiar downloadURL: ", "d1 " + getSPVal("d1"));
+            Log.e("Atiar downloadURL: ", "d2 " + getSPVal("d2"));
+            Log.e("Atiar downloadURL: ", "d3 " + getSPVal("d3"));
+            Log.e("Atiar downloadURL: ", "d4 " + getSPVal("d4"));
             // Here if you wish to do future process for ex. move to another activity do here
-            try{
-                new SendMailTask(mActivity).execute(fromEmail,
-                        fromPassword, toEmailList, emailSubject, emailBody);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-
         }
     }
 
@@ -205,6 +235,8 @@ public class Page7 extends AppCompatActivity {
         @Override
         public void onPostExecute(Object result) {
             statusDialog.dismiss();
+            Intent intent = new Intent(Page7.this,LastActivity.class);
+            startActivity(intent);
             finish();
         }}
 
@@ -249,10 +281,10 @@ public class Page7 extends AppCompatActivity {
                 "<br> <br>"+
                 getSPVal(Info.key_page6_animals) + "<br>" +
                 "<br> <br>"+
-                createImageLink(d1) +
-                createImageLink(d2) +
-                createImageLink(d3) +
-                createImageLink(d4) +
+                createImageLink(getSPVal(Info.fileName_page9q7_image+"link")) +
+                createImageLink(getSPVal(Info.fileNam_page10q8_image+"link")) +
+                createImageLink(getSPVal(Info.fileNam_page11q10_image+"link")) +
+                createImageLink(getSPVal(Info.fileNam_page13q12_image+"link")) +
                 "<br> <br>"+
                 getSPVal(Info.key_page7_haveYouFinished);
 
